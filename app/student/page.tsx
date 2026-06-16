@@ -1,3 +1,4 @@
+import StudentCard from "@/components/student/student-card"
 import { studentResponse } from "@/type/student-type"
 
 type Props = {
@@ -16,33 +17,36 @@ export default function Page({ student }: Props) {
             postalCode: "12345",
             country: "USA",
         },
+        department: {
+            id: 1,
+            departmentName: "IT"
+        }
+    }
+
+    const fallback2: studentResponse = {
+        id: 2,
+        name: "Vanra",
+        age: 20,
+        email: "lysovanra.it@gmail.com",
+        address: {
+            street: "271",
+            city: "Phnom Penh",
+            postalCode: "12000",
+            country: "Cambodia",
+        },
+        department: {
+            id: 1,
+            departmentName: "IT"
+        }
     }
 
     const s = student ?? fallback
+    const s2 = student ?? fallback2
 
     return (
-        <main style={{ padding: 24, fontFamily: "Inter, Arial, sans-serif" }}>
-            <article style={{ maxWidth: 720, margin: "0 auto", border: "1px solid #e5e7eb", borderRadius: 8, padding: 20 }}>
-                <header style={{ marginBottom: 16 }}>
-                    <h1 style={{ margin: 0 }}>Student Profile</h1>
-                    <p style={{ margin: 0, color: "#6b7280" }}>ID: {s.id}</p>
-                </header>
-
-                <section style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-                    <div>
-                        <h2 style={{ margin: "0 0 8px 0" }}>{s.name}</h2>
-                        <p style={{ margin: "0 0 4px 0" }}><strong>Age:</strong> {s.age}</p>
-                        <p style={{ margin: "0 0 4px 0" }}><strong>Email:</strong> {s.email}</p>
-                    </div>
-
-                    <div>
-                        <h3 style={{ margin: "0 0 8px 0" }}>Address</h3>
-                        <p style={{ margin: "0 0 4px 0" }}>{s.address.street}</p>
-                        <p style={{ margin: "0 0 4px 0" }}>{s.address.city}, {s.address.postalCode}</p>
-                        <p style={{ margin: 0 }}>{s.address.country}</p>
-                    </div>
-                </section>
-            </article>
-        </main>
+        <div>
+            <StudentCard student={s} />
+            <StudentCard student={s2} />
+        </div>
     )
 }

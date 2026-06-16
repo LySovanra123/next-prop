@@ -1,3 +1,5 @@
+import { department } from "./department-type"
+
 export type studentResponse = {
     id:number;
     name:string;
@@ -9,4 +11,5 @@ export type studentResponse = {
         postalCode:string;
         country:string;
     }
+    department?: department
 }
